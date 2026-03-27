@@ -10,7 +10,7 @@ you covered. No serious software here, just good vibes.
 
 ## Team
 - [Harry](https://github.com/harrywzl)
-- [Claire]()
+- [Claire](https://github.com/clairewwwwww)
 - [Frank]()
 - [Angelina]()
 - [Howard]()
