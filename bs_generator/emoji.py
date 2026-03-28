@@ -32,8 +32,9 @@ def emoji_mutator(text: str, mood: str = "happy") -> str:
     emojis = _EMOJI_MAP[mood]
     words = text.split(" ")
     out = []
+    added_mood_emoji = False
 
-    for i, word in enumerate(words):
+    for word in words:
         out.append(word)
 
         # word replacement (hello -> 👋)
@@ -44,7 +45,9 @@ def emoji_mutator(text: str, mood: str = "happy") -> str:
         # randomly inject mood emoji
         if word and random.random() < 0.40:
             out.append(random.choice(emojis))
+            added_mood_emoji = True
 
-    result = " ".join(out)
+    if not added_mood_emoji:
+        out.append(random.choice(emojis))
 
-    return result
+    return " ".join(out)
