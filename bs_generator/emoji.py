@@ -24,7 +24,7 @@ def emoji_mutator(text: str, color: str = "multicolor") -> str:
     if not isinstance(text, str): #if text is not a str
         raise TypeError(f"Expected str, got {type(text).__name__!r}.")
     
-    if color not in _COLOR_EMOJI_MAP: #if mood is invalid
+    if color not in _COLOR_EMOJI_MAP: #if color is invalid
         raise ValueError(f"color must be one of {_COLOR_EMOJI_MAP.keys()}; got {color!r}.")
     
     if not text.strip():
@@ -38,7 +38,7 @@ def emoji_mutator(text: str, color: str = "multicolor") -> str:
     for word in words:
         out.append(word)
 
-        # word replacement
+        # add emoji
         key = word.lower().strip(".,!?:")
         if key in _WORD_EMOJI_MAP:
             out.append(_WORD_EMOJI_MAP[key])
