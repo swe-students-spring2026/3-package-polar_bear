@@ -1,4 +1,3 @@
-"""pytest test_emoji.py -v"""
 import pytest
 from bs_generator.emoji import emoji_mutator
 
@@ -58,6 +57,22 @@ class TestColor:
     def test_yellow_color(self):
         result = emoji_mutator("hello", color="yellow")
         assert any(emoji in result for emoji in ["💛", "🌟", "🌼", "🍋"])
+
+class TestPunctuation:
+    def test_hello_with_comma(self):
+        result = emoji_mutator("hello,")
+        assert "👋" in result
+        assert "👋," in result
+
+    def test_ok_with_period(self):
+        result = emoji_mutator("ok.")
+        assert "👌" in result
+        assert "👌." in result
+
+    def test_yes_with_exclamation(self):
+        result = emoji_mutator("yes!")
+        assert "👍" in result
+        assert "👍!" in result
 
 
 class TestInvalidInput:

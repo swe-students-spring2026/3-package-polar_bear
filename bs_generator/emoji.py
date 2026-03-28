@@ -36,15 +36,23 @@ def emoji_mutator(text: str, color: str = "multicolor") -> str:
     added_color_emoji = False
 
     for word in words:
-        out.append(word)
+       # split punctuation
+        stripped = word.rstrip(".,!?:")
+        punctuation = word[len(stripped):]
+        
+        key = stripped.lower()
 
-        # add emoji
-        key = word.lower().strip(".,!?:")
+        # add emoji based on word
+        key = stripped.lower()
         if key in _WORD_EMOJI_MAP:
-            out.append(_WORD_EMOJI_MAP[key])
+            new_word = f"{stripped} {_WORD_EMOJI_MAP[key]}{punctuation}"
+        
+        else:
+            new_word = word
+        out.append(new_word)
 
-        # randomly inject color emoji
-        if word and random.random() < 0.40:
+        # random emoji
+        if random.random() < 0.40:
             out.append(random.choice(emojis))
             added_color_emoji = True
 
