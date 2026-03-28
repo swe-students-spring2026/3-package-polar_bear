@@ -12,42 +12,43 @@ _WORD_EMOJI_MAP: dict[str, str] = {
     "cool": "😎",
 }
 
-_EMOJI_MAP: dict[str, list[str]] = {
-    "happy": ["💛", "✨", "😊", "🌟"],
-    "sad": ["😭", "💔", "😢", "🥲"],
-    "angry": ["😡", "🔥", "🤬", "💢"],
-    "silly": ["🥴", "🤪", "😵‍💫", "😖"],
+_COLOR_EMOJI_MAP: dict[str, list[str]] = {
+    "multicolor": ["🌈", "✨", "🎉", "🦄"],
+    "red": ["❤️", "🌹", "🍓", "🔥"],
+    "blue": ["💙", "🫐", "🌊", "🌀"],
+    "green": ["💚", "🌿", "🍀", "🐢"],
+    "yellow": ["💛", "🌟", "🌼", "🍋"],
 }
 
-def emoji_mutator(text: str, mood: str = "happy") -> str:
+def emoji_mutator(text: str, color: str = "multicolor") -> str:
     if not isinstance(text, str): #if text is not a str
         raise TypeError(f"Expected str, got {type(text).__name__!r}.")
     
-    if mood not in _EMOJI_MAP: #if mood is invalid
-        raise ValueError(f"mood must be one of {_EMOJI_MAP.keys()}; got {mood!r}.")
+    if color in _COLOR_EMOJI_MAP: #if mood is invalid
+        raise ValueError(f"color must be one of {_COLOR_EMOJI_MAP.keys()}; got {color!r}.")
     
     if not text.strip():
         return text
 
-    emojis = _EMOJI_MAP[mood]
+    emojis = _COLOR_EMOJI_MAP[color]
     words = text.split(" ")
     out = []
-    added_mood_emoji = False
+    added_color_emoji = False
 
     for word in words:
         out.append(word)
 
-        # word replacement (hello -> 👋)
+        # word replacement
         key = word.lower().strip(".,!?:")
         if key in _WORD_EMOJI_MAP:
             out.append(_WORD_EMOJI_MAP[key])
 
-        # randomly inject mood emoji
+        # randomly inject color emoji
         if word and random.random() < 0.40:
             out.append(random.choice(emojis))
-            added_mood_emoji = True
+            added_color_emoji = True
 
-    if not added_mood_emoji:
+    if not added_color_emoji:
         out.append(random.choice(emojis))
 
     return " ".join(out)
