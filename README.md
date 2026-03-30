@@ -86,7 +86,7 @@ python example.py
 ### Setup
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/swe-students-spring20263-package-polar_bear.git>
 cd 3-package-polar_bear
 pipenv install --dev
 ```
