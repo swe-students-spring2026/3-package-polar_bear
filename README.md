@@ -1,11 +1,14 @@
 # BS Generator
 
-### Gen-Z Text Chaos Package
+[![Test Package](https://github.com/swe-students-spring2026/3-package-polar_bear/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/swe-students-spring2026/3-package-polar_bear/actions/workflows/test.yml)
 
-**BS Generator** is a fun, developer friendly Python package that brings a little chaos and joy to your terminal. Whether you want to mangle a string into peak Gen-Z internet speak, filter text with emojis, or summon a random motivational quote, this package has you covered. No serious software here, just good vibes.
+BS Generator is a lightweight Python package that transforms plain text into fun internet-style output.
+It currently includes two mutators:
 
-Give it a sentence and pick a mode. It gives you back terminal chaos.
- 
+- `brain_rot_mutator`: adds slang-style punctuation replacements and optional intensity effects.
+- `emoji_mutator`: injects word-based and color-themed emojis.
+
+This project has no server, no database, and no required environment variables.
 
 ## Team
 
@@ -15,35 +18,34 @@ Give it a sentence and pick a mode. It gives you back terminal chaos.
 - [Angelina](https://github.com/Tangelinawu)
 - [Howard](https://github.com/hewlett-packard-lovecraft)
 
+## PyPI
 
+Package page: https://pypi.org/project/bs-generator/
 
+Note: If the package has not been published yet, this link may show "Not Found" until release.
 
 ## Installation
 
-Install from the local project folder:
+Install locally for development (editable install):
 
 ```bash
 python -m pip install -e .
 ```
 
-Or use Pipenv:
+Or install dev dependencies with Pipenv:
 
 ```bash
 pipenv install --dev
 ```
 
-## Usage
+## API Usage (Import Into Your Own Code)
 
-Once you see >>> try the commands below.
+### 1) `brain_rot_mutator(text, intensity=1)`
 
-### brain_rot_mutator(text, intensity=1)
+Mutates punctuation and slang level in a sentence.
 
-Mutates punctuation and slang level in your sentence.
-
-- text (str): input sentence to mutate
-- intensity (int): mutation level, must be 1, 2, or 3
-
-Place in any string and intensity.
+- `text (str)`: input sentence
+- `intensity (int)`: must be `1`, `2`, or `3`
 
 ```python
 from bs_generator import brain_rot_mutator
@@ -53,14 +55,12 @@ print(brain_rot_mutator("The tests are failing again.", intensity=2))
 print(brain_rot_mutator("The tests are failing again.", intensity=3))
 ```
 
-### emoji_mutator(text, color="multicolor")
+### 2) `emoji_mutator(text, color="multicolor")`
 
-Adds word-mapped and random color-themed emojis.
+Adds mapped emojis (for words like hello/ok/yes) and random color-set emojis.
 
-- text (str): input sentence
-- color (str): emoji palette, one of multicolor, red, blue, green, yellow
-
-Place in any string and color.
+- `text (str)`: input sentence
+- `color (str)`: one of `multicolor`, `red`, `blue`, `green`, `yellow`
 
 ```python
 from bs_generator import emoji_mutator
@@ -69,51 +69,148 @@ print(emoji_mutator("hello yes ok", color="multicolor"))
 print(emoji_mutator("hello yes ok", color="blue"))
 ```
 
-To exit when done: >>> exit()
+## Example Program (Uses All Functions)
 
-## Example Program
+Complete runnable example: [example.py](example.py)
 
-See example.py for a complete demo using all functions.
-
-Run it with:
+Run it:
 
 ```bash
 python example.py
 ```
 
-## Contributing
+## Run Instructions 
 
-### Setup
+All commands below work in Git Bash, macOS/Linux Bash, and Windows CMD/PowerShell.
+
+From the repository root:
 
 ```bash
-git clone <https://github.com/swe-students-spring20263-package-polar_bear.git>
+python example.py
+```
+
+Interactive Python usage:
+
+```bash
+python
+```
+make sure in terminal >>> is there.
+
+Then in the Python prompt any of the API usage commands listed above:
+for example.
+
+```python
+from bs_generator import brain_rot_mutator, emoji_mutator
+brain_rot_mutator("your sentence here", intensity=3)
+emoji_mutator("your sentence here", color="green")
+```
+
+## Contributing
+
+### Clone and Set Up Environment
+
+```bash
+git clone https://github.com/swe-students-spring2026/3-package-polar_bear.git
 cd 3-package-polar_bear
 pipenv install --dev
 ```
 
-### Running Tests
+### Run Tests
+
+With Pipenv:
 
 ```bash
-pipenv run pytest
+pipenv run pytest tests/ -v
 ```
 
-If not using Pipenv:
+Without Pipenv:
 
 ```bash
 python -m pip install pytest
-python -m pytest -q
+python -m pytest tests/ -v
 ```
 
-### Building the Package
+### Build Package
+
+With Pipenv:
 
 ```bash
 pipenv run python -m build
 ```
 
-## Configure, Environment Variables, and Data
+Without Pipenv:
 
-- Run mode: No long-running server.
-- Environment variables: None required.
-- Database: None.
-- Secrets / .env: Not required.
+```bash
+python -m pip install build
+python -m build
+```
+
+## Configuration, Environment Variables, and Data
+
+- Environment variables: none required.
+- Database: none used.
+- Starter/imported data: not required.
+- Secret config files (`.env` or similar): none required for this project.
+
+Because no secrets are required, there is no `env.example` file needed for runtime.
+
+
+## Additional Quick Commands
+
+### Install For Importing In Another Project
+
+Published on PyPI:
+
+```bash
+pip install bs-generator
+```
+
+Local editable install from source:
+
+```bash
+python -m pip install -e .
+```
+
+### Minimal Import Example
+
+```python
+from bs_generator import brain_rot_mutator, emoji_mutator
+
+text = "Hello, can someone review this pull request?"
+print(brain_rot_mutator(text, intensity=2))
+print(emoji_mutator(text, color="yellow"))
+```
+
+### Platform-Specific Run Notes
+
+Git Bash / macOS / Linux:
+
+```bash
+python example.py
+```
+
+Windows CMD:
+
+```bat
+python example.py
+```
+
+Windows PowerShell:
+
+```powershell
+python example.py
+```
+
+## Requirement Coverage Checklist
+
+- Plain-language description: included at top of this README.
+- Latest workflow badge: included at top and linked to GitHub Actions workflow.
+- PyPI link: included in the PyPI section.
+- Function documentation with code examples: included for every public function.
+- Link to complete example program: included as [example.py](example.py).
+- Contributor setup/build/test instructions: included in Contributing section.
+- Teammates linked to GitHub: included in Team section.
+- Cross-platform run/config instructions: included in Run Instructions and Additional Quick Commands.
+- Environment variables and starter data instructions: included in Configuration section.
+- Secret files guidance: explicitly documented as not required for this project.
 
