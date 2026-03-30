@@ -1,5 +1,6 @@
 """pipenv run python example.py"""
 from bs_generator.brain_rot import brain_rot_mutator
+from bs_generator.emotion import emotion_mutator
 from bs_generator.emoji import emoji_mutator
 
 SAMPLES = [
@@ -19,6 +20,14 @@ def main() -> None:
     for sentence in SAMPLES:
 
         print(f"Original: {sentence}")
+
+        print("\nEmotion Mutator")
+        for emotion in ("classic", "cute", "happy", "love", "sleepy", "shy", "sad", "funny", "smug"):
+            print(f"    Emotion {emotion}: {emotion_mutator(sentence, emotion=emotion)}")
+        print(
+            "    Custom map: "
+            f"{emotion_mutator(sentence, emotion='funny', punctuation_map={'.': ' [DOT] ', '!': ' [BANG] ', '?': ' [Q] '})}"
+        )
     
         print("\nBrain Rot Mutator")
         for level in (1, 2, 3):
@@ -35,6 +44,16 @@ def main() -> None:
         brain_rot_mutator("oops", intensity=9)
     except ValueError as e:
         print(f"    Brain rot ValueError: {e}")
+
+    try:
+        emotion_mutator(999)
+    except TypeError as e:
+        print(f"    Emotion TypeError: {e}")
+
+    try:
+        emotion_mutator("oops", emotion="angry")
+    except ValueError as e:
+        print(f"    Emotion ValueError: {e}")
 
     try:
         brain_rot_mutator(999, intensity=1) 

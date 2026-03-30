@@ -3,20 +3,13 @@
 [![Test Package](https://github.com/swe-students-spring2026/3-package-polar_bear/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/swe-students-spring2026/3-package-polar_bear/actions/workflows/test.yml)
 
 BS Generator is a lightweight Python package that transforms plain text into fun internet-style output.
-It currently includes two mutators:
+It currently includes three mutators:
 
 - `brain_rot_mutator`: adds slang-style punctuation replacements and optional intensity effects.
+- `emotion_mutator`: changes punctuation with emotion modes and keyboard faces like `:)`, `:D`, `uwu`, and `(¬‿¬)`.
 - `emoji_mutator`: injects word-based and color-themed emojis.
 
 This project has no server, no database, and no required environment variables.
-
-## Team
-
-- [Harry](https://github.com/harrywzl)
-- [Claire](https://github.com/clairewwwwww)
-- [Frank](https://github.com/HandEater)
-- [Angelina](https://github.com/Tangelinawu)
-- [Howard](https://github.com/hewlett-packard-lovecraft)
 
 ## PyPI
 
@@ -69,6 +62,23 @@ print(emoji_mutator("hello yes ok", color="multicolor"))
 print(emoji_mutator("hello yes ok", color="blue"))
 ```
 
+### 3) `emotion_mutator(text, emotion="classic", punctuation_map=None)`
+
+Changes punctuation, applies emotion-based exclamation styles, and adds keyboard drawings.
+
+- `text (str)`: input sentence
+- `emotion (str)`: one of `classic`, `cute`, `happy`, `love`, `sleepy`, `shy`, `sad`, `funny`, `smug`
+
+
+```python
+from bs_generator.emotion import emotion_mutator
+
+print(emotion_mutator("Wow! Really?", emotion="smug"))
+print(emotion_mutator("Wow! Really?", emotion="funny"))
+print(emotion_mutator("Wow! Really?", emotion="sleepy"))
+
+```
+
 ## Example Program (Uses All Functions)
 
 Complete runnable example: [example.py](example.py)
@@ -79,7 +89,7 @@ Run it:
 python example.py
 ```
 
-## Run Instructions 
+## Run Instructions (Any Platform)
 
 All commands below work in Git Bash, macOS/Linux Bash, and Windows CMD/PowerShell.
 
@@ -94,14 +104,14 @@ Interactive Python usage:
 ```bash
 python
 ```
-make sure in terminal >>> is there.
+>>>
 
-Then in the Python prompt any of the API usage commands listed above:
-for example.
+Then in the Python prompt:
 
 ```python
-from bs_generator import brain_rot_mutator, emoji_mutator
+from bs_generator import brain_rot_mutator, emotion_mutator, emoji_mutator
 brain_rot_mutator("your sentence here", intensity=3)
+emotion_mutator("your sentence here!", emotion="cute")
 emoji_mutator("your sentence here", color="green")
 ```
 
@@ -154,12 +164,19 @@ python -m build
 
 Because no secrets are required, there is no `env.example` file needed for runtime.
 
+## Team
+
+- [Harry](https://github.com/harrywzl)
+- [Claire](https://github.com/clairewwwwww)
+- [Frank](https://github.com/HandEater)
+- [Angelina](https://github.com/Tangelinawu)
+- [Howard](https://github.com/hewlett-packard-lovecraft)
 
 ## Additional Quick Commands
 
 ### Install For Importing In Another Project
 
-Published on PyPI:
+If published on PyPI:
 
 ```bash
 pip install bs-generator
@@ -174,10 +191,11 @@ python -m pip install -e .
 ### Minimal Import Example
 
 ```python
-from bs_generator import brain_rot_mutator, emoji_mutator
+from bs_generator import brain_rot_mutator, emotion_mutator, emoji_mutator
 
 text = "Hello, can someone review this pull request?"
 print(brain_rot_mutator(text, intensity=2))
+print(emotion_mutator(text, emotion="smug"))
 print(emoji_mutator(text, color="yellow"))
 ```
 
