@@ -24,10 +24,6 @@ def main() -> None:
         print("\nEmotion Mutator")
         for emotion in ("classic", "cute", "happy", "love", "sleepy", "shy", "sad", "funny", "smug"):
             print(f"    Emotion {emotion}: {emotion_mutator(sentence, emotion=emotion)}")
-        print(
-            "    Custom map: "
-            f"{emotion_mutator(sentence, emotion='funny', punctuation_map={'.': ' [DOT] ', '!': ' [BANG] ', '?': ' [Q] '})}"
-        )
     
         print("\nBrain Rot Mutator")
         for level in (1, 2, 3):

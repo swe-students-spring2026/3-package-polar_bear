@@ -39,6 +39,10 @@ Or install dev dependencies with Pipenv:
 ```bash
 pipenv install --dev
 ```
+or 
+```bash
+pipenv run python
+```
 
 ## API Usage (Import Into Your Own Code)
 
@@ -71,7 +75,7 @@ print(emoji_mutator("hello yes ok", color="multicolor"))
 print(emoji_mutator("hello yes ok", color="blue"))
 ```
 
-### 3) `emotion_mutator(text, emotion="classic", punctuation_map=None)`
+### 3) `emotion_mutator(text, emotion="classic")`
 
 Changes punctuation, applies emotion-based exclamation styles, and adds keyboard drawings.
 
