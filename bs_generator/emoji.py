@@ -7,8 +7,6 @@ _WORD_EMOJI_MAP: dict[str, str] = {
     "okay": "👌",
     "yes": "👍",
     "no": "❌",
-    "love": "❤️",
-    "fire": "🔥",
     "cool": "😎",
 }
 
@@ -25,7 +23,7 @@ def emoji_mutator(text: str, color: str = "multicolor") -> str:
         raise TypeError(f"Expected str, got {type(text).__name__!r}.")
     
     if color not in _COLOR_EMOJI_MAP: #if color is invalid
-        raise ValueError(f"color must be one of {_COLOR_EMOJI_MAP.keys()}; got {color!r}.")
+        raise ValueError(f"color must be multicolor, red, blue, green, or yellow; got {color}.")
     
     if not text.strip():
         return text
