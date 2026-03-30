@@ -6,11 +6,12 @@ SAMPLES = [
     "I just pushed my code to production.",
     "The tests are failing again.",
     "Can someone review my pull request?",
-
     "Hello, can someone fix this?",
     "Yes, I love this new feature",
     "Ok, cool",
-
+    "Yippe blue is a pretty color",
+    "Flying chickens are the best",
+    "I can't believe this is happening",
     "this is a super super super super super long sentence",
 ]
 

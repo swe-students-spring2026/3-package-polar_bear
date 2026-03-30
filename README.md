@@ -16,13 +16,7 @@ Give it a sentence and pick a mode. It gives you back terminal chaos.
 - [Howard](https://github.com/hewlett-packard-lovecraft)
 
 
-## Build Status
 
-Class project package
-
-## PyPI
-
-Coming soon
 
 ## Installation
 
@@ -40,12 +34,16 @@ pipenv install --dev
 
 ## Usage
 
+Once you see >>> try the commands below.
+
 ### brain_rot_mutator(text, intensity=1)
 
 Mutates punctuation and slang level in your sentence.
 
 - text (str): input sentence to mutate
 - intensity (int): mutation level, must be 1, 2, or 3
+
+Place in any string and intensity.
 
 ```python
 from bs_generator import brain_rot_mutator
@@ -62,12 +60,16 @@ Adds word-mapped and random color-themed emojis.
 - text (str): input sentence
 - color (str): emoji palette, one of multicolor, red, blue, green, yellow
 
+Place in any string and color.
+
 ```python
 from bs_generator import emoji_mutator
 
 print(emoji_mutator("hello yes ok", color="multicolor"))
 print(emoji_mutator("hello yes ok", color="blue"))
 ```
+
+To exit when done: >>> exit()
 
 ## Example Program
 
