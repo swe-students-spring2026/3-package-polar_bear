@@ -15,41 +15,40 @@ SAMPLES = [
 ]
 
 def main() -> None:
-    print("Brain Rot Mutator")
-    for level in (1, 2, 3):
-        print(f"\nIntensity {level}")
-        for sentence in SAMPLES:
-            print(f"  Original : {sentence}")
-            print(f"  Mutated  : {brain_rot_mutator(sentence, intensity=level)}")
+    for sentence in SAMPLES:
+
+        print(f"Original: {sentence}")
     
-    print("\nEmoji Mutator")
-    for color in ("multicolor", "red", "blue", "green", "yellow"):
-        print(f"\n {color}")
-        for sentence in SAMPLES:
-            print(f"  Original : {sentence}")
-            print(f"  Mutated  : {emoji_mutator(sentence, color=color)}")
+        print("\nBrain Rot Mutator")
+        for level in (1, 2, 3):
+            print(f"    Intensity {level}: {brain_rot_mutator(sentence, intensity=level)}")
+                      
+        print("\nEmoji Mutator")
+        for color in ("multicolor", "red", "blue", "green", "yellow"):
+            print(f"    Color {color}: {emoji_mutator(sentence, color=color)}")
+        
+        print("\n")
 
-
-    print("\nError handling")
+    print("Error Handling")
     try:
         brain_rot_mutator("oops", intensity=9)
     except ValueError as e:
-        print(f"  Brain rot ValueError: {e}")
+        print(f"    Brain rot ValueError: {e}")
 
     try:
         brain_rot_mutator(999, intensity=1) 
     except TypeError as e:
-        print(f"  Brain rot TypeError: {e}")
+        print(f"    Brain rot TypeError: {e}")
 
     try:
         emoji_mutator("hello world", color="purple")
     except ValueError as e:
-        print(f"  Emoji ValueError: {e}")
+        print(f"    Emoji ValueError: {e}")
 
     try:
         emoji_mutator(999, color="red")
     except TypeError as e:
-        print(f"  Emoji TypeError: {e}")
+        print(f"    Emoji TypeError: {e}")
 
 if __name__ == "__main__":
     main()
