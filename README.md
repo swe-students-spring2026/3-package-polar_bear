@@ -11,6 +11,15 @@ It currently includes three mutators:
 
 This project has no server, no database, and no required environment variables.
 
+## Team
+
+- [Harry](https://github.com/harrywzl)
+- [Claire](https://github.com/clairewwwwww)
+- [Frank](https://github.com/HandEater)
+- [Angelina](https://github.com/Tangelinawu)
+- [Howard](https://github.com/hewlett-packard-lovecraft)
+
+
 ## PyPI
 
 Package page: https://pypi.org/project/bs-generator/
@@ -163,14 +172,6 @@ python -m build
 - Secret config files (`.env` or similar): none required for this project.
 
 Because no secrets are required, there is no `env.example` file needed for runtime.
-
-## Team
-
-- [Harry](https://github.com/harrywzl)
-- [Claire](https://github.com/clairewwwwww)
-- [Frank](https://github.com/HandEater)
-- [Angelina](https://github.com/Tangelinawu)
-- [Howard](https://github.com/hewlett-packard-lovecraft)
 
 ## Additional Quick Commands
 
