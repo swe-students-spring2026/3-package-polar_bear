@@ -18,13 +18,16 @@ _COLOR_EMOJI_MAP: dict[str, list[str]] = {
     "yellow": ["💛", "🌟", "🌼", "🍋"],
 }
 
+
 def emoji_mutator(text: str, color: str = "multicolor") -> str:
-    if not isinstance(text, str): #if text is not a str
+    if not isinstance(text, str):  # if text is not a str
         raise TypeError(f"Expected str, got {type(text).__name__!r}.")
-    
-    if color not in _COLOR_EMOJI_MAP: #if color is invalid
-        raise ValueError(f"color must be multicolor, red, blue, green, or yellow; got {color}.")
-    
+
+    if color not in _COLOR_EMOJI_MAP:  # if color is invalid
+        raise ValueError(
+            f"color must be multicolor, red, blue, green, or yellow; got {color}."
+        )
+
     if not text.strip():
         return text
 
@@ -34,17 +37,17 @@ def emoji_mutator(text: str, color: str = "multicolor") -> str:
     added_color_emoji = False
 
     for word in words:
-       # split punctuation
+        # split punctuation
         stripped = word.rstrip(".,!?:")
-        punctuation = word[len(stripped):]
-        
+        punctuation = word[len(stripped) :]
+
         key = stripped.lower()
 
         # add emoji based on word
         key = stripped.lower()
         if key in _WORD_EMOJI_MAP:
             new_word = f"{stripped} {_WORD_EMOJI_MAP[key]}{punctuation}"
-        
+
         else:
             new_word = word
         out.append(new_word)

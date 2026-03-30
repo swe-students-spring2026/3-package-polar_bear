@@ -42,7 +42,7 @@ def main() -> None:
         print(f"    Brain rot ValueError: {e}")
 
     try:
-        emotion_mutator(999)
+        emotion_mutator("999")
     except TypeError as e:
         print(f"    Emotion TypeError: {e}")
 
@@ -52,7 +52,7 @@ def main() -> None:
         print(f"    Emotion ValueError: {e}")
 
     try:
-        brain_rot_mutator(999, intensity=1) 
+        brain_rot_mutator("999", intensity=1) 
     except TypeError as e:
         print(f"    Brain rot TypeError: {e}")
 
@@ -62,7 +62,7 @@ def main() -> None:
         print(f"    Emoji ValueError: {e}")
 
     try:
-        emoji_mutator(999, color="red")
+        emoji_mutator("999", color="red")
     except TypeError as e:
         print(f"    Emoji TypeError: {e}")
 
