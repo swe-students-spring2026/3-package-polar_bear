@@ -8,10 +8,12 @@ def test_default_map_replaces_period():
     assert " fr." in result
 
 
-def test_custom_map_replaces_selected_chars():
-    result = emotion_mutator("A? B!", emotion="funny", punctuation_map={"?": " [Q] ", "!": " [BANG] "})
-    assert " [Q] " in result
-    assert " [BANG] " in result
+def test_default_replaces_question_and_exclamation(monkeypatch):
+    monkeypatch.setattr(emotion_module.random, "random", lambda: 1.0)
+    monkeypatch.setattr(emotion_module.random, "choice", lambda seq: ":)")
+    result = emotion_mutator("A? B!", emotion="funny")
+    assert " huh?" in result
+    assert " no cap!!" in result
 
 
 def test_invalid_emotion():
@@ -27,16 +29,6 @@ def test_invalid_emotion_type():
 def test_invalid_text_type():
     with pytest.raises(TypeError):
         emotion_mutator(123)
-
-
-def test_invalid_map_type():
-    with pytest.raises(TypeError):
-        emotion_mutator("hello", punctuation_map=[("!", "!!")])
-
-
-def test_invalid_map_key_length():
-    with pytest.raises(ValueError):
-        emotion_mutator("hello", punctuation_map={"!!": "wow"})
 
 
 def test_happy_emotion_exclamation_style():

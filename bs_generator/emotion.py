@@ -1,15 +1,5 @@
 import random
 import re
-from typing import Optional
-
-_DEFAULT_PUNCT_MAP: dict[str, str] = {
-    ".": " fr.",
-    "!": " no cap!",
-    "?": " huh?",
-    ",": " lowkey,",
-    ";": " bussin;",
-    ":": " deadass:",
-}
 
 _KEYBOARD_FACES: list[str] = [
     # classic
@@ -68,7 +58,6 @@ _EMOTION_EXCLAMATIONS: dict[str, str] = {
 def emotion_mutator(
     text: str,
     emotion: str = "classic",
-    punctuation_map: Optional[dict[str, str]] = None,
 ) -> str:
     if not isinstance(text, str):
         raise TypeError(f"Expected str, got {type(text).__name__!r}.")
@@ -83,21 +72,13 @@ def emotion_mutator(
     if not text.strip():
         return text
 
-    replacements = _DEFAULT_PUNCT_MAP if punctuation_map is None else punctuation_map
-    if not isinstance(replacements, dict):
-        raise TypeError("punctuation_map must be a dict[str, str].")
-
-    for key, value in replacements.items():
-        if not isinstance(key, str) or not isinstance(value, str):
-            raise TypeError("punctuation_map must be a dict[str, str].")
-        if len(key) != 1:
-            raise ValueError("Each punctuation_map key must be a single character.")
-
-    result = re.sub(
-        "[" + re.escape("".join(replacements.keys())) + "]",
-        lambda m: replacements[m.group()],
-        text,
-    )
+    # Keep punctuation replacement behavior, but remove configurable dict input.
+    result = re.sub(r"\.", " fr.", text)
+    result = re.sub(r"!", " no cap!", result)
+    result = re.sub(r"\?", " huh?", result)
+    result = re.sub(r",", " lowkey,", result)
+    result = re.sub(r";", " bussin;", result)
+    result = re.sub(r":", " deadass:", result)
 
     exclamation_token = _EMOTION_EXCLAMATIONS[emotion_key]
     result = re.sub(r"!+", exclamation_token, result)
