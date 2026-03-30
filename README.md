@@ -11,9 +11,9 @@ you covered. No serious software here, just good vibes.
 ## Team
 - [Harry](https://github.com/harrywzl)
 - [Claire](https://github.com/clairewwwwww)
-- [Frank]()
+- [Frank](https://github.com/HandEater)
 - [Angelina]()
-- [Howard]()
+- [Howard](https://github.com/hewlett-packard-lovecraft)
 
 ---
 
