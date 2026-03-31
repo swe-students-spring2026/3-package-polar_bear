@@ -1,7 +1,9 @@
 """pipenv run python example.py"""
+
 from bs_generator.brain_rot import brain_rot_mutator
 from bs_generator.emotion import emotion_mutator
 from bs_generator.emoji import emoji_mutator
+from bs_generator.wingdings import wingdingsify
 
 SAMPLES = [
     "I just pushed my code to production.",
@@ -16,23 +18,42 @@ SAMPLES = [
     "this is a super super super super super long sentence",
 ]
 
+
 def main() -> None:
     for sentence in SAMPLES:
-
         print(f"Original: {sentence}")
 
         print("\nEmotion Mutator")
-        for emotion in ("classic", "cute", "happy", "love", "sleepy", "shy", "sad", "funny", "smug"):
-            print(f"    Emotion {emotion}: {emotion_mutator(sentence, emotion=emotion)}")
-    
+        for emotion in (
+            "classic",
+            "cute",
+            "happy",
+            "love",
+            "sleepy",
+            "shy",
+            "sad",
+            "funny",
+            "smug",
+        ):
+            print(
+                f"    Emotion {emotion}: {emotion_mutator(sentence, emotion=emotion)}"
+            )
+
         print("\nBrain Rot Mutator")
         for level in (1, 2, 3):
-            print(f"    Intensity {level}: {brain_rot_mutator(sentence, intensity=level)}")
-                      
+            print(
+                f"    Intensity {level}: {brain_rot_mutator(sentence, intensity=level)}"
+            )
+
         print("\nEmoji Mutator")
         for color in ("multicolor", "red", "blue", "green", "yellow"):
             print(f"    Color {color}: {emoji_mutator(sentence, color=color)}")
-        
+
+        print("\nWingdingsify:")
+        print(
+            f"    Regular mode: {wingdingsify(sentence)} \n    Alphanumeric only mode: {wingdingsify(input=sentence)}"
+        )
+
         print("\n")
 
     print("Error Handling")
@@ -52,7 +73,7 @@ def main() -> None:
         print(f"    Emotion ValueError: {e}")
 
     try:
-        brain_rot_mutator(999, intensity=1) 
+        brain_rot_mutator(999, intensity=1)
     except TypeError as e:
         print(f"    Brain rot TypeError: {e}")
 
@@ -65,6 +86,12 @@ def main() -> None:
         emoji_mutator(999, color="red")
     except TypeError as e:
         print(f"    Emoji TypeError: {e}")
+
+    try:
+        wingdingsify(input=999, only_alphanumneric=True)
+    except TypeError as e:
+        print(f"    Wingdingsify TypeError: {e}")
+
 
 if __name__ == "__main__":
     main()
