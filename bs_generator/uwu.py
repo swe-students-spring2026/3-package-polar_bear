@@ -64,9 +64,6 @@ def uwu_mutator(text: str, intensity: int = 1) -> str:
 
     result = text
 
-    # intensity 1: basic uwu-style consonant swap
-    result = re.sub(r"[rl]", "w", result)
-    result = re.sub(r"[RL]", "W", result)
 
     if intensity >= 2:
         # whole-word replacements
@@ -76,6 +73,10 @@ def uwu_mutator(text: str, intensity: int = 1) -> str:
         # add "ny" sound before vowels after n/N
         result = re.sub(r"n([aeiou])", r"ny\1", result)
         result = re.sub(r"N([aeiouAEIOU])", r"Ny\1", result)
+
+    # intensity 1: basic uwu-style consonant swap
+    result = re.sub(r"[rl]", "w", result)
+    result = re.sub(r"[RL]", "W", result)
 
     if intensity == 3:
         # add cute suffixes after sentence-ending punctuation
