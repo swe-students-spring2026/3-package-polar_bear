@@ -3,11 +3,12 @@
 [![Test Package](https://github.com/swe-students-spring2026/3-package-polar_bear/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/swe-students-spring2026/3-package-polar_bear/actions/workflows/test.yml)
 
 BS Generator is a lightweight Python package that transforms plain text into fun internet-style output.
-It currently includes three mutators:
+It currently includes five mutators:
 
 - `brain_rot_mutator`: adds slang-style punctuation replacements and optional intensity effects.
 - `emotion_mutator`: changes punctuation with emotion modes and keyboard faces like `:)`, `:D`, `uwu`, and `(¬‿¬)`.
 - `emoji_mutator`: injects word-based and color-themed emojis.
+- `uwu_mutator`: converts plain text into playful uwu-style text with configurable intensity.
 - `wingdings`: convert text into wingdings symbols
 
 This project has no server, no database, and no required environment variables.
@@ -19,7 +20,6 @@ This project has no server, no database, and no required environment variables.
 - [Frank](https://github.com/HandEater)
 - [Angelina](https://github.com/Tangelinawu)
 - [Howard](https://github.com/hewlett-packard-lovecraft)
-
 
 ## PyPI
 
@@ -40,7 +40,9 @@ Or install dev dependencies with Pipenv:
 ```bash
 pipenv install --dev
 ```
-or 
+
+or
+
 ```bash
 pipenv run python
 ```
@@ -83,7 +85,6 @@ Changes punctuation, applies emotion-based exclamation styles, and adds keyboard
 - `text (str)`: input sentence
 - `emotion (str)`: one of `classic`, `cute`, `happy`, `love`, `sleepy`, `shy`, `sad`, `funny`, `smug`
 
-
 ```python
 from bs_generator.emotion import emotion_mutator
 
@@ -93,14 +94,29 @@ print(emotion_mutator("Wow! Really?", emotion="sleepy"))
 
 ```
 
-### 4) `wingdingsify(input, only_alphanumeric=False)`
+### 4) `uwu_mutator(text, intensity=1)`
+
+Transforms plain text into playful uwu-style output.
+
+- `text (str)`: input sentence
+- `intensity (int)`: must be `1`, `2`, or `3`
+
+```python
+from bs_generator import uwu_mutator
+
+print(uwu_mutator("Hello friend!", intensity=1))
+print(uwu_mutator("I love my dog.", intensity=2))
+print(uwu_mutator("Nice to see you!", intensity=3))
+```
+
+### 5) `wingdingsify(input, only_alphanumeric=False)`
 
 Change input text into wingdings symbols.
 
 - `input`: Your input string.
 - `only_alphanumeric`: Boolean. When true, will only convert alphanumeric characters into wingdings symbols.
 
-``` python
+```python
 from bs_generator.wingdings import wingdingsify
 
 print(wingdingsify("Hello world!"))
@@ -132,15 +148,16 @@ Interactive Python usage:
 ```bash
 python
 ```
->>>
 
 Then in the Python prompt:
 
 ```python
-from bs_generator import brain_rot_mutator, emotion_mutator, emoji_mutator
+from bs_generator import brain_rot_mutator, emotion_mutator, emoji_mutator, uwu_mutator
 brain_rot_mutator("your sentence here", intensity=3)
 emotion_mutator("your sentence here!", emotion="cute")
 emoji_mutator("your sentence here", color="green")
+uwu_mutator("your sentence here", intensity = 2)
+wingdingsify("your sentence here", only_alphanumeric=False)
 ```
 
 ## Contributing
@@ -251,4 +268,3 @@ python example.py
 - Cross-platform run/config instructions: included in Run Instructions and Additional Quick Commands.
 - Environment variables and starter data instructions: included in Configuration section.
 - Secret files guidance: explicitly documented as not required for this project.
-
