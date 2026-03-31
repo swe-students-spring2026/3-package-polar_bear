@@ -93,6 +93,20 @@ print(emotion_mutator("Wow! Really?", emotion="sleepy"))
 
 ```
 
+### 4) `wingdingsify(input, only_alphanumeric=False)`
+
+Change input text into wingdings symbols.
+
+- `input`: Your input string.
+- `only_alphanumeric`: Boolean. When true, will only convert alphanumeric characters into wingdings symbols.
+
+``` python
+from bs_generator.wingdings import wingdingsify
+
+print(wingdingsify("Hello world!"))
+print(wingdingsify("Hello world!", only_alphanumneric=True))
+```
+
 ## Example Program (Uses All Functions)
 
 Complete runnable example: [example.py](example.py)

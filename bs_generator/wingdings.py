@@ -5,9 +5,6 @@
 # key is 2 + 2nd col / char code for a symbol in Wingdings font
 # value is 2 + 6th col / is char code of the symbol (in utf-8)
 
-import difflib
-
-
 wingdings_to_unicode: dict[int, int] = {
     0x20: 0x0020,
     0x21: 0x1F589,
@@ -236,6 +233,9 @@ wingdings_to_unicode: dict[int, int] = {
 
 def wingdingsify(input: str, only_alphanumneric: bool = False) -> str:
     """Translate a string into wingdings symbols."""
+
+    if type(input) != str:
+        raise TypeError(f"Expected string, got {str(type(input))}")
 
     def wingdingsify_char(input: str) -> str:
         """use a nested function so we don't have to write a test for it"""
