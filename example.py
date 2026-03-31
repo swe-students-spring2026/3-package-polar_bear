@@ -3,6 +3,7 @@
 from bs_generator.brain_rot import brain_rot_mutator
 from bs_generator.emotion import emotion_mutator
 from bs_generator.emoji import emoji_mutator
+from bs_generator.uwu import uwu_mutator
 from bs_generator.wingdings import wingdingsify
 
 SAMPLES = [
@@ -49,6 +50,12 @@ def main() -> None:
         for color in ("multicolor", "red", "blue", "green", "yellow"):
             print(f"    Color {color}: {emoji_mutator(sentence, color=color)}")
 
+        print("\nUwu Mutator")
+        for level in (1, 2, 3):
+            print(
+                f"    Intensity {level}: {uwu_mutator(sentence, intensity=level)}"
+            )
+
         print("\nWingdingsify:")
         print(
             f"    Regular mode: {wingdingsify(sentence)} \n    Alphanumeric only mode: {wingdingsify(input=sentence)}"
@@ -86,6 +93,16 @@ def main() -> None:
         emoji_mutator(999, color="red")
     except TypeError as e:
         print(f"    Emoji TypeError: {e}")
+        
+    try:
+        uwu_mutator("oops", intensity=9)
+    except ValueError as e:
+        print(f"    Uwu ValueError: {e}")
+
+    try:
+        uwu_mutator(999, intensity=1)
+    except TypeError as e:
+        print(f"    Uwu TypeError: {e}")
 
     try:
         wingdingsify(input=999, only_alphanumneric=True)
