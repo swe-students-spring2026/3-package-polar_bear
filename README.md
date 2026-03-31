@@ -8,6 +8,7 @@ It currently includes three mutators:
 - `brain_rot_mutator`: adds slang-style punctuation replacements and optional intensity effects.
 - `emotion_mutator`: changes punctuation with emotion modes and keyboard faces like `:)`, `:D`, `uwu`, and `(¬‿¬)`.
 - `emoji_mutator`: injects word-based and color-themed emojis.
+- `wingdings`: convert text into wingdings symbols
 
 This project has no server, no database, and no required environment variables.
 

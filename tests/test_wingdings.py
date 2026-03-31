@@ -16,7 +16,7 @@ class TestWingdingsify:
         result = wingdingsify("", True)
         assert result is ""
 
-    def test_wingdings(self):
+    def test_multiline(self):
         """test multiline input"""
         input = """
         None of the characters were mapped to Unicode at the time. However, Unicode approved the addition of many symbols in the Wingdings and Webdings fonts in Unicode 7.0.
