@@ -237,7 +237,7 @@ def wingdingsify(input: str, only_alphanumneric: bool = False) -> str:
     if type(input) != str:
         raise TypeError(f"Expected string, got {type(input).__name__}")
 
-    def wingdingsify_char(input: str) -> str:
+    def wingdingsify_char(input: str, only_alphanumeric=only_alphanumneric) -> str:
         """use a nested function so we don't have to write a test for it"""
         wingdings_char_code = ord(input[0])
 
