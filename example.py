@@ -11,12 +11,12 @@ SAMPLES = [
     "The tests are failing again.",
     "Can someone review my pull request?",
     "Hello, can someone fix this?",
-    "Yes, I love this new feature",
-    "Ok, cool",
-    "Yippe blue is a pretty color",
-    "Flying chickens are the best",
-    "I can't believe this is happening",
-    "this is a super super super super super long sentence",
+    # "Yes, I love this new feature",
+    # "Ok, cool",
+    # "Yippe blue is a pretty color",
+    # "Flying chickens are the best",
+    # "I can't believe this is happening",
+    # "this is a super super super super super long sentence",
 ]
 
 
@@ -58,7 +58,7 @@ def main() -> None:
 
         print("\nWingdingsify:")
         print(
-            f"    Regular mode: {wingdingsify(sentence)} \n    Alphanumeric only mode: {wingdingsify(input=sentence)}"
+        f"    Original: {sentence}\n    Regular mode: {wingdingsify(sentence)} \n    Alphanumeric only mode: {wingdingsify(input=sentence, only_alphanumneric=True)}"
         )
 
         print("\n")
